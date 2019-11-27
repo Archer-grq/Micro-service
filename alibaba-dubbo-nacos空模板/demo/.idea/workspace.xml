@@ -33,7 +33,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Global Libraries" />
@@ -80,6 +80,7 @@
       <workItem from="1574834853571" duration="1475000" />
       <workItem from="1574836340814" duration="134000" />
       <workItem from="1574836508980" duration="2670000" />
+      <workItem from="1574854101732" duration="544000" />
     </task>
     <servers />
   </component>
