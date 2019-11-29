@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 /**
  * 自定义认证授权
+ * 怎样授权 自己定义
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
