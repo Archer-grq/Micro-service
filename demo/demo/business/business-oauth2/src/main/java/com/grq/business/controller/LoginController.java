@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.grq.business.dto.LoginParam;
 import com.grq.commons.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -42,7 +43,7 @@ public class LoginController {
 
         Map<String,Object> map= Maps.newHashMap();
 
-
+        UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
 
         map.put("token","123456");
        return new ResponseResult<Map<String,Object>>(20000,"ok",map);
