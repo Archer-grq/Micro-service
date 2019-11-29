@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.SecurityContextAccessor;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import sun.plugin.liveconnect.SecurityContextHelper;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.Objects;
 
@@ -85,6 +87,7 @@ public class LoginController {
 
     }
 
+    //获取用户信息
     @GetMapping(value = "/user/info")
     public ResponseResult<LoginInfo> userInfo(){
         //访问时会携带 access_token，所以可以根据 access_token 获得用户信息
@@ -95,4 +98,22 @@ public class LoginController {
         return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK,"获取用户信息",loginInfo);
     }
 
+
+    /**
+     * 用户退出
+     * @param request 请求信息
+     * @return null
+     */
+    @PostMapping(value = "/user/logout")
+    public ResponseResult<Void> userLogout(HttpServletRequest request){
+        //ResponseResult<Void>表示泛型为空
+        String access_token = request.getParameter("access_token");
+
+        //根据token获取认证信息
+        OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(access_token);
+        //删除用户认证信息，即 客户端无法再次访问服务器，因为没有token就没有权限了，请求会被安全配置阻拦
+        tokenStore.removeAccessToken(oAuth2AccessToken);
+
+        return new ResponseResult<Void>(ResponseResult.CodeStatus.OK,"用户注销",null);
+    }
 }

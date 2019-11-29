@@ -6,6 +6,7 @@ import org.apache.dubbo.config.annotation.Service;
 import javax.annotation.Resource;
 import com.grq.provider.mapper.UmsAdminMapper;
 import com.grq.provider.api.UmsAdminService;
+import tk.mybatis.mapper.entity.Example;
 
 @Service(version = "1.0.0")
 public class UmsAdminServiceImpl implements UmsAdminService{
@@ -15,7 +16,7 @@ public class UmsAdminServiceImpl implements UmsAdminService{
 
     @Override
     public int insert(UmsAdmin umsAdmin) {
-        return 0;
+        return umsAdminMapper.insert(umsAdmin);
     }
 
     @Override
@@ -25,11 +26,12 @@ public class UmsAdminServiceImpl implements UmsAdminService{
 
     @Override
     public UmsAdmin get(UmsAdmin umsAdmin) {
-        return null;
+        return umsAdminMapper.selectOne(umsAdmin);
     }
 
     @Override
     public int update(UmsAdmin umsAdmin) {
+
         return 0;
     }
 
