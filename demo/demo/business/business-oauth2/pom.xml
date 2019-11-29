@@ -44,7 +44,11 @@
 
 
         <!-- Projects Begin -->
-        
+        <dependency>
+            <groupId>com.grq</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <!-- Projects End -->
     </dependencies>
 </project>
