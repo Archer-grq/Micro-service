@@ -51,7 +51,7 @@ public class UmsAdminServiceImpl implements UmsAdminService{
         oldAdmin.setNickName(umsAdmin.getNickName());
         oldAdmin.setNote(umsAdmin.getNote());
         oldAdmin.setStatus(umsAdmin.getStatus());
-        return umsAdminMapper.updateByPrimaryKey(umsAdmin);
+        return umsAdminMapper.updateByPrimaryKey(oldAdmin);
     }
 
     @Override

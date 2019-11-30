@@ -19,7 +19,8 @@ service.interceptors.request.use(
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
-      config.headers['X-Token'] = getToken()
+      //将token信息放到 header中 不适用 参数形式
+      config.headers['authorization'] = 'Bearer ' + getToken()
     }
     return config
   },

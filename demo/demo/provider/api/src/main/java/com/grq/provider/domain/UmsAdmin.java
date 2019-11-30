@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 @Table(name = "ums_admin")
 public class UmsAdmin implements Serializable {
+    private static final long serialVersionUID = 5990231802618121074L;
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "JDBC")
@@ -65,5 +66,5 @@ public class UmsAdmin implements Serializable {
     @Column(name = "`status`")
     private Integer status;
 
-    private static final long serialVersionUID = 1L;
+
 }

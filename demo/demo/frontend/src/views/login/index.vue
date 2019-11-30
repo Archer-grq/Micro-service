@@ -102,7 +102,8 @@ export default {
       })
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {//表单验证
+      this.$refs.loginForm.validate(valid => {
+          //表单验证
         if (valid) {
           this.loading = true;
           this.$store.dispatch('user/login', this.loginForm).then(() => {

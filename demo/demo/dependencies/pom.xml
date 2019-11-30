@@ -23,7 +23,7 @@
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
 
         <!-- Ali Cloud -->
-<!--        <aliyun-sdk-oss.version>3.6.0</aliyun-sdk-oss.version>-->
+        <aliyun-sdk-oss.version>3.6.0</aliyun-sdk-oss.version>
     </properties>
     <dependencyManagement>
         <dependencies>
