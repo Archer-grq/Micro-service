@@ -46,10 +46,17 @@
             <artifactId>api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.grq</groupId>
+            <artifactId>configuration-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 <modules>
     <module>business-reg</module>
     <module>business-oauth2</module>
+    <module>business-profile-feign</module>
+    <module>business-profile-service</module>
 </modules>
 
 </project>

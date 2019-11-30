@@ -10,9 +10,18 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+
+#开启 Feign xhttp 的方式
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+
+
 dubbo:
   scan:
-    base-packages: com.grq.business.controller
+    base-packages: com.grq.business.controller,com.grq.business.service
   protocol:
     name: dubbo
     port: -1
@@ -21,6 +30,7 @@ dubbo:
     address: nacos://localhost:8848
 server:
   port: 9001
+
 management:
   endpoints:
     web:

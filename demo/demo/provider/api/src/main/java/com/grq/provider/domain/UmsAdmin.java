@@ -3,6 +3,8 @@ package com.grq.provider.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
@@ -46,12 +48,14 @@ public class UmsAdmin implements Serializable {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "YYYY-MM-dd HH:mm:ss")
     @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 最后登录时间
      */
+    @JsonFormat(pattern = "YYYY-MM-dd HH:mm:ss")
     @Column(name = "login_time")
     private Date loginTime;
 

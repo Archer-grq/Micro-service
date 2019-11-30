@@ -3,11 +3,14 @@ package com.grq.business.controller;
 import com.google.common.collect.Maps;
 import com.grq.business.dto.LoginInfo;
 import com.grq.business.dto.LoginParam;
+import com.grq.business.feign.ProfileFeign;
 import com.grq.commons.dto.ResponseResult;
 import com.grq.commons.utils.MapperUtils;
 import com.grq.commons.utils.OkHttpClientUtil;
+import com.grq.provider.domain.UmsAdmin;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,8 +49,14 @@ public class LoginController {
     @Resource(name = "userDetailsServiceBean")
     public UserDetailsService userDetailsService;
 
+    //注入feign
+    @Resource
+    public ProfileFeign profileFeign;
+
     @Resource
     public BCryptPasswordEncoder passwordEncoder;
+
+
 
     @Resource
     public TokenStore tokenStore;
@@ -89,12 +98,18 @@ public class LoginController {
 
     //获取用户信息
     @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> userInfo(){
+    public ResponseResult<LoginInfo> userInfo() throws Exception {
         //访问时会携带 access_token，所以可以根据 access_token 获得用户信息
         //获取当前用户信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String jsonInfo = profileFeign.info(authentication.getName());
+        UmsAdmin umsAdmin = MapperUtils.json2pojoByTree(jsonInfo, "data", UmsAdmin.class);
+
+        //封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setName(authentication.getName());
+        loginInfo.setName(umsAdmin.getNickName());
+        loginInfo.setAvatar(umsAdmin.getIcon());
         return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK,"获取用户信息",loginInfo);
     }
 

@@ -86,11 +86,5 @@
             </exclusion>
         </exclusions>
     </dependency>
-    <!-- Apache Dubbo End -->
-        <dependency>
-            <groupId>com.grq</groupId>
-            <artifactId>api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
     </dependencies>
 </project>
