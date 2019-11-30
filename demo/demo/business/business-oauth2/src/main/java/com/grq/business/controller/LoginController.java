@@ -31,7 +31,6 @@ import java.util.Objects;
 /**
  * 登录管理
  */
-@CrossOrigin
 @RestController
 public class LoginController {
 

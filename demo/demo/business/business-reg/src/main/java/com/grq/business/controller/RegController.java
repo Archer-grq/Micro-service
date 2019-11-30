@@ -7,7 +7,6 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)//解决跨域
 @RestController
 @RequestMapping(value = "reg")
 public class RegController {
